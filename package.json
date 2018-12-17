@@ -3,8 +3,7 @@
   "version": "1.0.0",
   "description": "get calibre tools",
   "main": "index.js",
-  "scripts": {
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/BlackHole1/get-calibre-tools.git"
