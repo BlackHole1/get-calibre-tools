@@ -28,18 +28,6 @@ const calibreList = [
   'web2disk',
 ];
 
-const readFilePromise = (file) => {
-  return new Promise ((resolve, reject) => {
-    readFile(file, (err, data) => {
-      if (err) {
-        return reject(new Error(`[get-calibre-tools]: Failed to read ${file} file`));
-      } else {
-        return resolve(data.toString())
-      }
-    })
-  })
-};
-
 const getCalibreTools = async (toolName) => {
   return await new Promise(async (resolve, reject) => {
     if (!calibreList.includes(toolName)) {
@@ -105,8 +93,11 @@ const getCalibreTools = async (toolName) => {
               return resolve(path);
             }
           }
+          return reject(Error(`[get-calibre-tools]: Did not find ${toolName}.exe file. ${setPathTip}`));
         });
       });
+    } else {
+      return reject(Error(`[get-calibre-tools]: Did not find ${toolName} file. ${setPathTip}`));
     }
   });
 };
@@ -132,7 +123,7 @@ getCalibreTools.__proto__.setPath = async (path) => {
         if (err) {
           return reject(Error('[get-calibre-tools]: Failed to write to file'));
         } else {
-          return resolve();
+          return resolve(path);
         }
       })
     }
