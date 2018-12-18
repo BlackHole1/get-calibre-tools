@@ -11,22 +11,7 @@
 这个库是用于获取以下工具的
 
 * calibre
-* calibre
 * calibre-customize
-* calibre-debug
-* calibre-server
-* calibre-smtp
-* calibredb
-* ebook-convert
-* ebook-edit
-* ebook-meta
-* ebook-polish
-* ebook-viewer
-* fetch-ebook-metadata
-* lrf2lrs
-* lrfviewer
-* lrs2lrf
-* web2diskcalibre-customize
 * calibre-debug
 * calibre-server
 * calibre-smtp
@@ -85,7 +70,7 @@ getCalibreTools('ebook-meta')
 ### 使用`setPath`方法手动设置路径
 
 ```js
-getCalibreTools.setPath(`D:\Program Files\Calibre2\ebook-meta.exe`)
+getCalibreTools.setPath(`D:\\Program Files\\Calibre2\\ebook-meta.exe`)
   .catch(e => {
     console.log(e);
   })
