@@ -2,6 +2,8 @@
 
 [![Github License](https://img.shields.io/github/license/BlackHole1/get-calibre-tools.svg?logo=appveyor&longCache=true&style=flat-square)](https://github.com/BlackHole1/get-calibre-tools) [![Github Stars](https://img.shields.io/github/stars/BlackHole1/get-calibre-tools.svg?logo=appveyor&longCache=true&style=flat-square)](https://github.com/BlackHole1/get-calibre-tools)
 
+[中文文档](https://github.com/BlackHole1/get-calibre-tools/blob/master/README-zh.md)
+
 > Provide an API to get the calibre tool
 
 This library is used to get the following tools:
