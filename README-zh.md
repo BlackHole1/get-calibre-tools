@@ -2,6 +2,8 @@
 
 [![Github License](https://img.shields.io/github/license/BlackHole1/get-calibre-tools.svg?logo=appveyor&longCache=true&style=flat-square)](https://github.com/BlackHole1/get-calibre-tools) [![Github Stars](https://img.shields.io/github/stars/BlackHole1/get-calibre-tools.svg?logo=appveyor&longCache=true&style=flat-square)](https://github.com/BlackHole1/get-calibre-tools)
 
+如果你使用到了这个项目，可以点击star支持一下。
+
 [English document](https://github.com/BlackHole1/get-calibre-tools/blob/master/README.md)
 
 > 提供一个获取calibre工具的api
