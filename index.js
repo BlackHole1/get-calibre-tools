@@ -1,6 +1,6 @@
 const { existsSync, readFileSync, appendFile, mkdirSync, writeFile } = require('fs');
 const { join, parse } = require('path');
-const { platform, homedir } = require('os');
+const { platform, homedir, EOL } = require('os');
 const Registry = require('winreg');
 
 const _platform = platform();
@@ -14,7 +14,7 @@ if (!existsSync(calibrePath)) {
   try {
     mkdirSync(calibrePath);
   } catch (e) {
-    return new Promise.reject(Error(`[get-calibre-tools]: Failed to create ${calibrePath} directory, try to create it manually and then run it again.`));
+    return Promise.reject(Error(`[get-calibre-tools]: Failed to create ${calibrePath} directory, try to create it manually and then run it again.`));
   }
 }
 
@@ -49,8 +49,12 @@ const getCalibreTools = async (toolName) => {
         const fileContent = readFileSync(calibreFilePath, 'utf8').toString();
         const regex = new RegExp(`^${toolName}=(.+)$`, 'm');
         const result = regex.exec(fileContent);
+
         if (result) {
-          return resolve(result[1]);
+          if (existsSync(result[1])) {
+            return resolve(result[1]);
+          }
+          getCalibreTools.clearConfig(toolName);
         }
       } catch (e) {
         return reject(new Error(`[get-calibre-tools]: Failed to read ${calibreFilePath} file`));
@@ -129,7 +133,7 @@ getCalibreTools.__proto__.setPath = async (path) => {
     }
 
     if (existsSync(path)) {
-      appendFile(calibreFilePath, `${name}=${path}`, 'utf8', (err) => {
+      appendFile(calibreFilePath, `${name}=${path}${EOL}`, 'utf8', (err) => {
         if (err) {
           return reject(Error('[get-calibre-tools]: Failed to write to file'));
         } else {
@@ -140,9 +144,28 @@ getCalibreTools.__proto__.setPath = async (path) => {
   });
 };
 
-getCalibreTools.__proto__.clearConfig = () => {
+getCalibreTools.__proto__.clearConfig = (toolName) => {
+  if (toolName && !calibreList.includes(toolName)) {
+    return Promise.reject(Error(`[get-calibre-tools]: Please make sure the field name to be cleared is in: ${calibreList.join(',')}`));
+  }
+
+  if (!existsSync(calibreFilePath)) {
+    return Promise.reject(Error(`[get-calibre-tools]: ${calibreFilePath} file does not exist`));
+  }
+
   return new Promise((resolve, reject) => {
-    writeFile(calibreFilePath, '', (err, ) => {
+    let content = '';
+    if (toolName) {
+      try {
+        const fileContent = readFileSync(calibreFilePath, 'utf8').toString();
+        const regex = new RegExp(`^${toolName}=(.+)$`, 'm');
+        content = fileContent.replace(regex, '');
+      } catch (e) {
+        return reject(`[get-calibre-tools]: Failed to read ${calibreFilePath} file`)
+      }
+    }
+
+    writeFile(calibreFilePath, content, (err) => {
       if (err) {
         return reject(Error(`[get-calibre-tools]: Failed to clear the configuration file, try to manually clear or delete the ${calibreFilePath} file.`));
       } else {

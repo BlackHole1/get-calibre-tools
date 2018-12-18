@@ -85,7 +85,49 @@ getCalibreTools.setPath(`D:\Program Files\Calibre2\ebook-meta.exe`)
   .catch(e => {
     console.log(e);
   })
-  .then(path) => {
+  .then(path => {
     console.log(path)
   })
 ```
+
+### 清除配置文件
+
+当路径不存在时，清除配置文件
+
+#### 清除全部配置
+
+```js
+getCalibreTools.clearConfig()
+  .catch(e => {
+    console.log(e);
+  })
+  .then(() => {
+    console.log('success');
+  })
+```
+
+#### 清除指定配置字段
+
+```shell
+$ cat ~/.calibre-node/calibrePath.txt
+calibredb=/Applications/calibre.app/Contents/console.app/Contents/MacOS/calibredb
+ebook-meta=/Applications/calibre.app/Contents/console.app/Contents/MacOS/ebook-meta
+ebook-edit=/Applications/calibre.app/Contents/console.app/Contents/MacOS/ebook-edit
+```
+
+```js
+getCalibreTools.clearConfig('ebook-meta')
+  .catch(e => {
+    console.log(e);
+  })
+  .then(() => {
+    console.log('success');
+  });
+```
+
+```shell
+$ cat ~/.calibre-node/calibrePath.txt
+calibredb=/Applications/calibre.app/Contents/console.app/Contents/MacOS/calibredb
+ebook-edit=/Applications/calibre.app/Contents/console.app/Contents/MacOS/ebook-edit
+```
+

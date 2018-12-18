@@ -85,7 +85,48 @@ getCalibreTools.setPath(`D:\Program Files\Calibre2\ebook-meta.exe`)
   .catch(e => {
     console.log(e);
   })
-  .then(path) => {
+  .then(path => {
     console.log(path)
+  });
+```
+
+### Clear configuration file
+
+Clear the configuration file when the path in the configuration file has changed
+
+#### Clear all configurations
+
+```js
+getCalibreTools.clearConfig()
+  .catch(e => {
+    console.log(e);
   })
+  .then(() => {
+    console.log('success');
+  })
+```
+
+#### Clear the specified configuration
+
+```shell
+$ cat ~/.calibre-node/calibrePath.txt
+calibredb=/Applications/calibre.app/Contents/console.app/Contents/MacOS/calibredb
+ebook-meta=/Applications/calibre.app/Contents/console.app/Contents/MacOS/ebook-meta
+ebook-edit=/Applications/calibre.app/Contents/console.app/Contents/MacOS/ebook-edit
+```
+
+```js
+getCalibreTools.clearConfig('ebook-meta')
+  .catch(e => {
+    console.log(e);
+  })
+  .then(() => {
+    console.log('success');
+  });
+```
+
+```shell
+$ cat ~/.calibre-node/calibrePath.txt
+calibredb=/Applications/calibre.app/Contents/console.app/Contents/MacOS/calibredb
+ebook-edit=/Applications/calibre.app/Contents/console.app/Contents/MacOS/ebook-edit
 ```
