@@ -70,7 +70,7 @@ getCalibreTools('ebook-meta')
 ### 使用`setPath`方法手动设置路径
 
 ```js
-getCalibreTools.setPath(`D:\Program Files\Calibre2\ebook-meta.exe`)
+getCalibreTools.setPath(`D:\\Program Files\\Calibre2\\ebook-meta.exe`)
   .catch(e => {
     console.log(e);
   })

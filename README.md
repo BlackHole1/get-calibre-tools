@@ -70,7 +70,7 @@ getCalibreTools('ebook-meta')
 The set path will be written to the local file for later value.
 
 ```js
-getCalibreTools.setPath(`D:\Program Files\Calibre2\ebook-meta.exe`)
+getCalibreTools.setPath(`D:\\Program Files\\Calibre2\\ebook-meta.exe`)
   .catch(e => {
     console.log(e);
   })
