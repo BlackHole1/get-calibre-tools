@@ -6,7 +6,7 @@
   "scripts": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/BlackHole1/get-calibre-tools.git"
+    "url": "git+https://github.com/Calibre-Node/get-calibre-tools.git"
   },
   "keywords": [
     "get-calibre-tools",
@@ -32,9 +32,9 @@
   "author": "Black-Hole <158blackhole@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/BlackHole1/get-calibre-tools/issues"
+    "url": "https://github.com/Calibre-Node/get-calibre-tools/issues"
   },
-  "homepage": "https://github.com/BlackHole1/get-calibre-tools#readme",
+  "homepage": "https://github.com/Calibre-Node/get-calibre-tools#readme",
   "dependencies": {
     "winreg": "^1.2.4"
   }
