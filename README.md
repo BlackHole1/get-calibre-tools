@@ -11,22 +11,7 @@ If you use this project, you can click star to support it.
 This library is used to get the following tools:
 
 * calibre
-* calibre
 * calibre-customize
-* calibre-debug
-* calibre-server
-* calibre-smtp
-* calibredb
-* ebook-convert
-* ebook-edit
-* ebook-meta
-* ebook-polish
-* ebook-viewer
-* fetch-ebook-metadata
-* lrf2lrs
-* lrfviewer
-* lrs2lrf
-* web2diskcalibre-customize
 * calibre-debug
 * calibre-server
 * calibre-smtp
